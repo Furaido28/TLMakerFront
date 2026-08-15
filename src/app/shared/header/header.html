@@ -1,0 +1,36 @@
+<header class="w-full bg-white border-b border-slate-200 px-6 py-3 flex items-center justify-between shadow-sm">
+  <!-- Logo / Titre de l'application -->
+  <div class="flex items-center gap-3">
+    <h1 class="text-base font-semibold text-slate-800">TLMaker</h1>
+  </div>
+
+  <!-- Sélecteur d'utilisateurs -->
+  <div class="flex items-center gap-3">
+    <label for="user-select" class="text-sm font-medium text-slate-600 hidden sm:inline-block">
+      Utilisateur :
+    </label>
+
+    <div class="relative">
+      <select
+        id="user-select"
+        [value]="selectedUserId()"
+        (change)="onUserChange($event)"
+        class="appearance-none w-56 bg-slate-50 border borSder-slate-300 text-slate-900 text-sm rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 block py-2 pl-3 pr-8 transition cursor-pointer hover:bg-slate-100"
+      >
+        <option value="" disabled selected>Sélectionner un utilisateur</option>
+        @for (user of users(); track user.id) {
+          <option [value]="user.id">
+            {{ user.nom }} {{ user.prenom }}
+          </option>
+        }
+      </select>
+
+      <!-- Flèche personnalisée -->
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
